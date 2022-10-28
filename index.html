@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="heading">Search Element in linked list</div>
+        <div id="listContainer" class="block"></div>
+        <div id="comment"></div>
+        <div class="hr"></div>
+        <div class="topbar">
+            <input type="text" class="input" id="items" placeholder="Linked List Items">
+            <button class="button" onclick="createLinkedList()">Create</button>
+            <div class="space"></div>
+            <input type="text" class="input" id="element" placeholder="Element to be searched">
+            <button class="button" onclick="search()">Search</button>
+        </div>
+    </div>
+    <script>
+        var i = 0;
+
+        function addItem(num, animation, bgcolor) {
+            setTimeout(function () {
+                temp = listContainer.innerHTML.replace('animate-display', '');
+                temp += `
+                        <div class="list-item ${animation} ${bgcolor}">
+                            <div class="data">${num}</div>
+                            <div class="link"></div>
+                            <div class="arrow">
+                                <div class="head1"></div>
+                                <div class="head2"></div>
+                            </div>
+                        </div>
+                        `;
+                listContainer.innerHTML = temp;
+            }, 1000 * i++);
+        }
+
+        function createLinkedList() {
+            if (items.value.length != 0) {
+                listContainer.innerHTML = "";
+                listItems = items.value.split(",");
+                i = 0;
+                comment.innerHTML = "";
+                listItems.forEach(element => {
+                    addItem(element, 'animate-display', 'skyblue');
+                });
+            }
+        }
+
+        function search() {
+            if (element.value.length != 0) {
+                var ele = element.value;
+                i = 0;
+                listContainer.innerHTML = "";
+                listItems = items.value.split(",");
+                comment.innerHTML = "";
+                indexs = "";
+                for (k = 0; k < listItems.length; k++) {
+                    temp = listItems[i];
+                    if (ele == temp) {
+                        indexs += i + " ";
+                        addItem(temp, 'animate-focus', 'green');
+                    } else {
+                        addItem(temp, 'animate-display', 'skyblue');
+                    }
+                }
+                setTimeout(function () {
+                    if (indexs == "") {
+                        comment.innerHTML = "Element not found";
+                    } else {
+                        comment.innerHTML = "Element found at following indexs: " + indexs;
+                    }
+                }, 1000 * listItems.length);
+            }
+        }
+    </script>
+</body>
+
+</html>
