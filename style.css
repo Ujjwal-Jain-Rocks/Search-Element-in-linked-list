@@ -5,25 +5,11 @@
 }
 
 @keyframes shake {
-    0% {
-        transform: rotate(5deg);
-    }
-
-    25% {
-        transform: rotate(0deg);
-    }
-
-    50% {
-        transform: rotate(-5deg);
-    }
-
-    75% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(5deg);
-    }
+    0% {transform: rotate(5deg);}
+    25% {transform: rotate(0deg);}
+    50% {transform: rotate(-5deg);}
+    75% {transform: rotate(0deg);}
+    100% {transform: rotate(5deg);}
 }
 
 @keyframes display-animate {
@@ -31,7 +17,6 @@
         transform: translateX(-20px);
         opacity: 0;
     }
-
     to {
         transform: translateX(0px);
         opacity: 1;
@@ -46,10 +31,21 @@
     animation: shake .3s infinite;
 }
 
+body {
+    background: url('https://img.freepik.com/free-vector/blue-pink-halftone-background_53876-99004.jpg?w=2000');
+}
+
 .heading {
     text-align: center;
     font-size: 35px;
-    text-decoration: underline;
+    margin: 0 10px;
+    padding: 10px 10px;
+    border-radius: 0.5rem;
+    display: block;
+    border-bottom: 0.2rem solid black;
+    transition: all 0.3s;
+    background-color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 
 .container {
@@ -113,12 +109,12 @@
 .data {
     width: 70%;
     text-align: center;
-    border-right: 2px solid black;
 }
 
 .link {
     width: 30%;
     text-align: center;
+    border-left: 2px solid black;
 }
 
 .arrow {

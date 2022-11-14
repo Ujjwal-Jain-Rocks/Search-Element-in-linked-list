@@ -11,7 +11,7 @@
 
 <body>
     <div class="container">
-        <div class="heading">Search Element in linked list</div>
+        <div class="heading">Search Element In Linked List</div>
         <div id="listContainer" class="block"></div>
         <div id="comment"></div>
         <div class="hr"></div>
@@ -29,7 +29,8 @@
         function addItem(num, animation, bgcolor) {
             setTimeout(function () {
                 temp = listContainer.innerHTML.replace('animate-display', '');
-                temp += `
+                if (num != "NULL") {
+                    temp += `
                         <div class="list-item ${animation} ${bgcolor}">
                             <div class="data">${num}</div>
                             <div class="link"></div>
@@ -39,6 +40,13 @@
                             </div>
                         </div>
                         `;
+                } else {
+                    temp += `
+                        <div class="list-item ${animation} ${bgcolor}">
+                            <div class="data">${num}</div>
+                        </div>
+                        `;
+                }
                 listContainer.innerHTML = temp;
             }, 1000 * i++);
         }
@@ -53,6 +61,7 @@
                     addItem(element, 'animate-display', 'skyblue');
                 });
             }
+            addItem("NULL", 'animate-display', 'skyblue');
         }
 
         function search() {
@@ -72,6 +81,7 @@
                         addItem(temp, 'animate-display', 'skyblue');
                     }
                 }
+                addItem("NULL", 'animate-display', 'skyblue');
                 setTimeout(function () {
                     if (indexs == "") {
                         comment.innerHTML = "Element not found";
